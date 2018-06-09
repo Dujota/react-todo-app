@@ -1,46 +1,47 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { Table, Checkbox, Button } from "semantic-ui-react";
+import "./App.css";
 
 const todos = [
-  'Learn React',
-  'Learn Redux',
-  'Learn React-Native'
-]
+  "Learn React",
+  "Learn Redux",
+  "Learn React-Native",
+  "Create a new Web App"
+];
 
+const renderTodos = todos => {
+  return todos.map((todo, index) => (
+    <div className="todo-item new" key={index}>
+      {todo}
+    </div>
+  ));
+};
 
 class App extends Component {
   render() {
-    return React.createElement(
-      'div',
-      {
-        className: 'app'
-      },
-      React.createElement(
-        'div',
-        {
-          className: 'todo-container',
-        },
-        // todos.map(todo =>todo)
-        todos.map((todo, index) => {
-          return React.createElement(
-            'div',
-          {className: "todo-item-row",
-          key: index
-        },
-          todo)
-        })
-      )
-    )
+    const shouldRender = true;
+    return (
+      <div className="app">
+        <div className="todo-container">
+          <label htmlFor="new-todo">Add a Todo</label>
+          <br />
+          <input type="text" id="new-todo" />
+          <Table>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>
+                  <Checkbox />
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {shouldRender ? renderTodos(todos) : "Sorry no Todos"}
+            </Table.Body>
+          </Table>
+        </div>
+      </div>
+    );
   }
 }
 
 export default App;
-/*
-  <div class="app">
-      <div class="todo-container">
-        <div class="todo-item-row">Learn React!</div>
-        <div class="todo-item-row">Learn Redux</div>
-        <div class="todo-item-row">Learn React Native</div>
-      </div>
-    </div>
-*/
