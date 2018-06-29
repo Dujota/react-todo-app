@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Table, Checkbox, Button } from "semantic-ui-react";
-import "./App.css";
+import React, { Component } from 'react';
+import { Table, Checkbox, Button } from 'semantic-ui-react';
+import './App.css';
 
 const todos = [
-  "Learn React",
-  "Learn Redux",
-  "Learn React-Native",
-  "Create a new Web App"
+  'Learn React',
+  'Learn Redux',
+  'Learn React-Native',
+  'Create a new Web App'
 ];
 
 const renderTodos = todos => {
@@ -23,9 +23,11 @@ class App extends Component {
     return (
       <div className="app">
         <div className="todo-container">
-          <label htmlFor="new-todo">Add a Todo</label>
-          <br />
-          <input type="text" id="new-todo" />
+          <div className="ui labeled right icon input">
+            <div className="ui label">Add a Todo</div>
+            <input type="text" placeholder="Add a TODO" id="new-todo" />
+            <i className="add circle link icon" />
+          </div>
           <Table>
             <Table.Header>
               <Table.Row>
@@ -35,7 +37,7 @@ class App extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {shouldRender ? renderTodos(todos) : "Sorry no Todos"}
+              {shouldRender ? renderTodos(todos) : 'Sorry no Todos'}
             </Table.Body>
           </Table>
         </div>
