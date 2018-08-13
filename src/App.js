@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { Table, Checkbox, Button } from 'semantic-ui-react';
 import './App.css';
+import TodoItem from './todo';
 
 const todos = [
   'Learn React',
   'Learn Redux',
   'Learn React-Native',
-  'Create a new Web App'
+  'Create a new Web App',
+  'test new item'
 ];
 
-const renderTodos = todos => {
-  return todos.map((todo, index) => (
-    <div className="todo-item new" key={index}>
-      {todo}
-    </div>
-  ));
-};
-
 class App extends Component {
+  renderTodos = todos => {
+    return todos.map((todo, index) => <TodoItem key={index} todo={todo} />);
+  };
+
   render() {
-    const shouldRender = true;
     return (
       <div className="app">
         <div className="todo-container">
@@ -36,9 +33,7 @@ class App extends Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>
-              {shouldRender ? renderTodos(todos) : 'Sorry no Todos'}
-            </Table.Body>
+            <Table.Body>{this.renderTodos(todos)}</Table.Body>
           </Table>
         </div>
       </div>
